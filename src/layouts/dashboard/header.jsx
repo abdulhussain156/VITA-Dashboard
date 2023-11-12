@@ -1,0 +1,132 @@
+import PropTypes from 'prop-types';
+
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import { useTheme } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import { styled } from '@mui/material/styles';
+import { useResponsive } from 'src/hooks/use-responsive';
+import InputBase from '@mui/material/InputBase';
+import { bgBlur } from 'src/theme/css';
+import SearchIcon from '@mui/icons-material/Search';
+
+import Iconify from 'src/components/iconify';
+
+import { NAV, HEADER } from './config-layout';
+import { Avatar, Typography } from '@mui/material';
+
+// ----------------------------------------------------------------------
+
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: '15px',
+  flexGrow: 0.3,
+  backgroundColor: '#F4F4F4',
+  '&:hover': {
+    backgroundColor: '#F4F4F4',
+  },
+  marginRight: theme.spacing(2),
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(3),
+    width: 'auto',
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    color: 'black',
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
+    },
+  },
+}));
+export default function Header({ onOpenNav }) {
+  const theme = useTheme();
+
+  const lgUp = useResponsive('up', 'lg');
+
+  const renderContent = (
+    <>
+      {!lgUp && (
+        <IconButton onClick={onOpenNav} sx={{ mr: 1 }}>
+          <Iconify icon="eva:menu-2-fill" />
+        </IconButton>
+      )}
+
+      <Search>
+        <SearchIconWrapper>
+          <SearchIcon color="secondary" />
+        </SearchIconWrapper>
+        <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
+      </Search>
+
+      <Box sx={{ flexGrow: 1 }} />
+
+      <Box display="flex" gap={2} alignItems="center">
+        <Box display="flex" flexDirection="column" alignItems="end">
+          <Typography variant="subtitle1" color="secondary" lineHeight={1}>
+            Dr Joseph Darmon
+          </Typography>
+          <Typography variant="subtitle2" color="secondary">
+            Chirurgien-Dentiste
+          </Typography>
+        </Box>
+
+        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+      </Box>
+    </>
+  );
+
+  return (
+    <AppBar
+      sx={{
+        boxShadow: 'none',
+        // height: HEADER.H_MOBILE,
+        zIndex: theme.zIndex.appBar + 1,
+        ...bgBlur({
+          color: '#DEEAF3',
+        }),
+        transition: theme.transitions.create(['height'], {
+          duration: theme.transitions.duration.shorter,
+        }),
+        ...(lgUp && {
+          width: `calc(100% - ${NAV.WIDTH + 1}px)`,
+          // height: HEADER.H_DESKTOP,
+        }),
+      }}
+    >
+      <Toolbar
+        sx={{
+          height: 1,
+          px: { lg: 5 },
+        }}
+      >
+        {renderContent}
+      </Toolbar>
+    </AppBar>
+  );
+}
+
+Header.propTypes = {
+  onOpenNav: PropTypes.func,
+};

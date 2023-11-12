@@ -1,0 +1,77 @@
+/* Scrollbar styles */
+.rbc-calendar {
+  background: rgba(241, 241, 241, 1);
+  max-height: 90%;
+  overflow-y: scroll; /* Ensure scrollbar appears if content overflows vertically */
+}
+
+.rbc-time-content:-webkit-scrollbar {
+  display: none;
+}
+
+.rbc-time-content:-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 4px;
+}
+
+.rbc-time-content:-webkit-scrollbar-thumb:hover {
+  background: darkgray;
+}
+
+.rbc-day-slot {
+  background-color: white;
+}
+.rbc-time-header-content {
+  border: none !important;
+}
+.rbc-time-view {
+  border: none !important;
+}
+.rbc-time-content {
+  border: none !important;
+  margin-top: 10px !important;
+}
+.rbc-header {
+  background: rgba(241, 241, 241, 1);
+  color: rgba(101, 101, 101, 1);
+  padding: 5px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border: none !important;
+}
+.rbc-time-view .rbc-allday-cell {
+  display: none;
+}
+
+.rbc-event {
+  padding: 0px !important;
+  border-radius: 0px !important;
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.rbc-background-event {
+  padding: 0px !important;
+  border-radius: 0px !important;
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.rbc-time-gutter {
+  background-color: #f1f1f1;
+  border: none;
+  padding-left: 20px;
+}
+
+.rbc-event-label {
+  display: none !important;
+}
+
+.rbc-events-container {
+  width: 100% !important;
+}
+
+.rbc-timeslot-group {
+  min-height: 40px !important;
+  border: none !important;
+}
