@@ -18,8 +18,8 @@ export const EVENT_STATUS_COLORS = {
 
 export const EVENTS = [
   {
-    start: moment('2023-11-12T10:00:00').toDate(),
-    end: moment('2023-11-12T11:00:00').toDate(),
+    start: moment('2023-11-13T10:00:00').toDate(),
+    end: moment('2023-11-13T11:00:00').toDate(),
     data: {
       appointment: {
         title: 'Madame',
@@ -50,8 +50,8 @@ export const EVENTS = [
     isDraggable: true,
   },
   {
-    start: moment('2023-11-12T11:00:00').toDate(),
-    end: moment('2023-11-12T11:40:00').toDate(),
+    start: moment('2023-11-13T11:00:00').toDate(),
+    end: moment('2023-11-13T11:40:00').toDate(),
     data: {
       appointment: {
         title: 'Mr',
@@ -82,8 +82,8 @@ export const EVENTS = [
     isDraggable: true,
   },
   {
-    start: moment('2023-11-08T11:40:00').toDate(),
-    end: moment('2023-11-08T12:30:00').toDate(),
+    start: moment('2023-11-14T11:40:00').toDate(),
+    end: moment('2023-11-14T12:30:00').toDate(),
     data: {
       appointment: {
         title: 'Mrs',
