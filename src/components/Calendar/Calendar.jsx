@@ -53,7 +53,7 @@ const Calendar = () => {
     <BigCalendar
       localizer={localizer}
       // date={'11-10-2023'}
-      defaultView={'week'}
+      defaultView={'work_week'}
       max={moment('2021-10-10T19:00:00').toDate()}
       min={moment('2021-10-10T09:00:00').toDate()}
       formats={{
