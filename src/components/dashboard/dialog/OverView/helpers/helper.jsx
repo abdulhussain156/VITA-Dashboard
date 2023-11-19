@@ -20,7 +20,7 @@ export const renderPatientCards = (patients, label) => (
     }}
   >
     {patients.map((item, index) => (
-      <Box key={index}>
+      <Box key={index} mb={3}>
         <PatientsCard
           name={item.name}
           title={item.title}

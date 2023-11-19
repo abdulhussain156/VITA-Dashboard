@@ -5,7 +5,7 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { Box, Button } from '@mui/material';
 const CalendarMonth = () => {
   return (
-    <Box ml={2} mt={1}>
+    <Box ml={2} mt={1} p={2}>
       <Button fullWidth variant="contained" color="primary" sx={{ borderRadius: '15px' }}>
         Aujourd’hui
       </Button>

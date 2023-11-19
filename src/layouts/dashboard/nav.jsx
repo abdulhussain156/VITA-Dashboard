@@ -4,39 +4,42 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
-import { alpha } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-
-import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-
+import SearchIcon from '@mui/icons-material/Search';
 import { usePathname } from 'src/routes/hooks';
 import { RouterLink } from 'src/routes/components';
-
 import { useResponsive } from 'src/hooks/use-responsive';
 import Scrollbar from 'src/components/scrollbar';
-
 import { NAV } from './config-layout';
 import navConfig from './config-navigation';
 import SettingsIcon from '@mui/icons-material/Settings';
 import SupportIcon from '@mui/icons-material/Support';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { Search, SearchIconWrapper, StyledInputBase } from './customSearch/CustomSearchSideBar';
+import { Button, ButtonBase } from '@mui/material';
+import { useReasonsContext } from 'src/context/ReasonsContext';
 // ----------------------------------------------------------------------
 const PLACEHOLDER_LINKS = [
   { text: 'Aide', icon: SettingsIcon },
   { text: 'Contactez-nous', icon: SupportIcon },
   { text: 'Deconnexion', icon: LogoutIcon },
 ];
+
+const selection = [
+  { title: 'Premiére consultation dentai..', color: 'rgba(199, 225, 165, 1)' },
+  { title: ' Soins dentaire', color: 'rgba(243, 182, 168, 1)' },
+  { title: ' Empreinte', color: 'rgba(159, 183, 242, 1)' },
+  { title: ' Consultation d’enfant', color: 'rgba(243, 168, 204, 1)' },
+  { title: 'Urgence', color: 'rgba(223, 30, 30, 0.6)' },
+];
 export default function Nav({ openNav, onCloseNav }) {
   const pathname = usePathname();
 
   const upLg = useResponsive('up', 'lg');
-
+  const { showReasons } = useReasonsContext();
   useEffect(() => {
     if (openNav) {
       onCloseNav();
@@ -110,7 +113,38 @@ export default function Nav({ openNav, onCloseNav }) {
 
       {/* {renderAccount} */}
 
-      {renderMenu}
+      {showReasons ? (
+        <Box mt={2}>
+          <Typography variant="body1" color="primary" textAlign="center">
+            Séléctionnez <br></br> un motif de Rendez-vous
+          </Typography>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon color="secondary" />
+            </SearchIconWrapper>
+            <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
+          </Search>
+          <Box m={1}>
+            {selection.map((item) => (
+              <ButtonBase
+                sx={{
+                  bgcolor: item.color,
+                  fontSize: '12px',
+                  width: '100%',
+                  p: 1.5,
+                  mb: 1,
+                  borderRadius: '10px',
+                  color: 'white',
+                }}
+              >
+                {item.title}
+              </ButtonBase>
+            ))}
+          </Box>
+        </Box>
+      ) : (
+        renderMenu
+      )}
 
       <Box sx={{ flexGrow: 1 }} />
 

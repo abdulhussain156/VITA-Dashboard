@@ -1,8 +1,9 @@
 /* Scrollbar styles */
 .rbc-calendar {
   background: rgba(241, 241, 241, 1);
-  max-height: 90%;
-  overflow-y: scroll; /* Ensure scrollbar appears if content overflows vertically */
+  max-height: 70%;
+  overflow-y: scroll;
+  margin-bottom: 3rem; /* Ensure scrollbar appears if content overflows vertically */
 }
 
 .rbc-time-content:-webkit-scrollbar {
@@ -30,6 +31,7 @@
 .rbc-time-content {
   border: none !important;
   margin-top: 10px !important;
+  overflow-x: hidden;
 }
 .rbc-header {
   background: rgba(241, 241, 241, 1);
@@ -74,4 +76,11 @@
 .rbc-timeslot-group {
   min-height: 40px !important;
   border: none !important;
+}
+
+.rbc-current-time-indicator {
+  background-color: rgba(4, 96, 163, 1);
+  height: 2px;
+  /* left: -1500px; */
+  width: 100rem;
 }

@@ -10,6 +10,12 @@ export const CalendarProvider = ({ children }) => {
   const [show, setShow] = useState(false);
   const [data, setData] = useState([]);
 
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    console.log('hello');
+    setOpen(true);
+  };
+
   const toggleShow = () => {
     setShow(!show);
   };
@@ -19,7 +25,9 @@ export const CalendarProvider = ({ children }) => {
   };
 
   return (
-    <CalendarContext.Provider value={{ show, toggleShow, data, updateData, setShow }}>
+    <CalendarContext.Provider
+      value={{ show, toggleShow, data, updateData, setShow, open, setOpen, handleClickOpen }}
+    >
       {children}
     </CalendarContext.Provider>
   );

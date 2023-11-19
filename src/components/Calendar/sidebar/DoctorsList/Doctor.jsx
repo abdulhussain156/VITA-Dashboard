@@ -6,11 +6,11 @@ const Doctor = ({ id, name, title, description }) => {
   return (
     <Box display="flex" alignItems="center" gap={2} justifyContent="space-between" mb={2}>
       <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-      <Box flex={1}>
-        <Typography variant="subtitle2" color="primary.dark">
+      <Box flex={1} textAlign="center">
+        <Typography variant="subtitle2" textAlign="center" color="primary.dark">
           {name}
         </Typography>
-        <Typography variant="overline" textAlign="center" color="secondary.lighter">
+        <Typography variant="caption" textAlign="center" color="secondary.lighter">
           {title}
         </Typography>
       </Box>

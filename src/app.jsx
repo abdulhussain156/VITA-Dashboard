@@ -5,7 +5,7 @@ import { useScrollToTop } from 'src/hooks/use-scroll-to-top';
 import ThemeProvider from 'src/theme';
 
 import Router from 'src/routes/sections';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { ReasonsProvider } from './context/ReasonsContext';
 // ----------------------------------------------------------------------
 
 export default function App() {
@@ -13,7 +13,9 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      <Router />
+      <ReasonsProvider>
+        <Router />
+      </ReasonsProvider>
     </ThemeProvider>
   );
 }

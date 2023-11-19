@@ -1,4 +1,14 @@
-import { Box, Button, Popover, Typography, Paper, TextField, Divider } from '@mui/material';
+import {
+  Box,
+  Button,
+  Popover,
+  Typography,
+  Paper,
+  TextField,
+  Divider,
+  ButtonBase,
+  Link,
+} from '@mui/material';
 import React from 'react';
 import ChairIcon from '@mui/icons-material/Chair';
 import SvgColor from 'src/components/svg-color';
@@ -52,8 +62,17 @@ const PopOverContent = () => {
             gap={1}
             p={1}
             sx={{
-              bgcolor: item.text === 'En consultation' && 'rgba(144, 195, 78, 0.22)',
               borderRadius: '8px',
+              cursor: 'pointer',
+              '&:hover': {
+                bgcolor: 'rgba(144, 195, 78, 0.22)',
+                '& .svg-color': {
+                  color: 'rgba(127, 171, 71, 1)', // Change the color of SVG on hover
+                },
+                '& .MuiTypography-root': {
+                  color: 'rgba(127, 171, 71, 1)', // Change the color of Typography on hover
+                },
+              },
             }}
           >
             <SvgColor
@@ -61,14 +80,11 @@ const PopOverContent = () => {
               sx={{
                 width: 18,
                 height: 18,
-                color: item.text === 'En consultation' && 'rgba(127, 171, 71, 1)',
+                // color: item.text === 'En consultation' && 'rgba(127, 171, 71, 1)',
               }}
             />
 
-            <Typography
-              variant="subtitle2"
-              sx={{ flex: 1, color: item.text === 'En consultation' && 'rgba(127, 171, 71, 1)' }}
-            >
+            <Typography variant="subtitle2" sx={{ flex: 1 }}>
               {item.text}
             </Typography>
           </Box>
@@ -77,7 +93,7 @@ const PopOverContent = () => {
       <Box m={2} display="flex" justifyContent="center">
         <Divider sx={{ width: '20%', borderBottomWidth: '2px' }} />
       </Box>
-      <Box display="flex" alignItems="center" gap={1} p={1}>
+      <Box display="flex" alignItems="center" gap={1} p={1} sx={{ cursor: 'pointer' }}>
         <SvgColor
           src="/assets/icons/delete.svg"
           sx={{

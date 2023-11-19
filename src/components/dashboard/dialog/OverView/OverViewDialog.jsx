@@ -28,7 +28,7 @@ export default function MaxWidthDialog({ open, setOpen }) {
     <React.Fragment>
       <Dialog
         fullWidth
-        maxWidth="lg"
+        maxWidth="md"
         open={open}
         onClose={(event, reason) => {
           if (reason !== 'backdropClick' && reason !== 'escapeKeyDown') {
@@ -73,7 +73,7 @@ export default function MaxWidthDialog({ open, setOpen }) {
         <DialogContent>
           <Grid container sx={{ overflow: 'hidden' }}>
             <Grid item xs>
-              <Typography variant="subtitle2" color="primary.dark" textAlign="center">
+              <Typography variant="subtitle1" color="primary.dark" textAlign="center">
                 <span style={{ textDecoration: 'underline' }}>Patients presents</span> (21)
               </Typography>
               {renderPatientCards(patientsData, 'Patients presents')}
@@ -82,7 +82,7 @@ export default function MaxWidthDialog({ open, setOpen }) {
             <Divider orientation="vertical" variant="middle" flexItem />
 
             <Grid item xs>
-              <Typography variant="subtitle2" color="primary.dark" textAlign="center">
+              <Typography variant="subtitle1" color="primary.dark" textAlign="center">
                 <span style={{ textDecoration: 'underline' }}>Absence/retard</span> (3)
               </Typography>
               {renderPatientCards(patientsData2, 'Absence/retard')}

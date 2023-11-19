@@ -27,9 +27,9 @@ const Appointments = () => {
   };
 
   return (
-    <Box m={3} sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%' }}>
       {switches.map((switchItem, index) => (
-        <Box key={index} m={2} display="flex" justifyContent="space-between" gap={8}>
+        <Box key={index} mt={2} mb={2} display="flex" justifyContent="space-between" gap={8}>
           <Typography variant="h6" color="primary.dark">
             {switchItem.label}
           </Typography>

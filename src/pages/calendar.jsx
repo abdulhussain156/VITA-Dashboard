@@ -3,7 +3,7 @@ import React from 'react';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 import CalendarPage from 'src/components/Calendar/CalendarPage';
-import { CalendarProvider } from 'src/components/context/CalendarContext';
+import { CalendarProvider } from 'src/context/CalendarContext';
 
 const calendar = () => {
   return (

@@ -53,7 +53,7 @@ export const typography = {
   },
   h4: {
     fontWeight: 500,
-    fontSize: '26px',
+    fontSize: '22px',
     ...responsiveFontSizes({ sm: 20, md: 24, lg: 24 }),
   },
   h5: {
@@ -85,11 +85,11 @@ export const typography = {
     fontWeight: 400,
     fontSize: '14px',
     lineHeight: '17px',
-    color: '#939393',
   },
   caption: {
     lineHeight: 1.5,
     fontSize: pxToRem(12),
+    lineHeight: '17px',
   },
   overline: {
     fontWeight: 600,

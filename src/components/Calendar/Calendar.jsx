@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import './index.css';
 import { Calendar as BigCalendar, momentLocalizer } from 'react-big-calendar';
@@ -7,68 +7,67 @@ import AppointmentEvent from './customComponents/AppointmentEvent';
 const localizer = momentLocalizer(moment);
 import CalendarButtons from './customComponents/CalendarButtons';
 
+import { getAvailableSlotsForDates } from './helpers/GetavailableSlots';
+import useCalendar from './helpers/hooks/useCalendar';
+import useAppointment from './helpers/hooks/useAppointment';
+import AddAppointmentSlot from './Dialogs/AddAppointment/AddAppointmentSlot';
+import { useCalendarContext } from '../../context/CalendarContext';
+import dayjs from 'dayjs';
+import { useReasonsContext } from 'src/context/ReasonsContext';
+
 const Calendar = () => {
-  React.useEffect(() => {
-    const timeSlots = document.querySelectorAll('.rbc-time-slot');
-
-    timeSlots.forEach((timeSlot) => {
-      const label = timeSlot.querySelector('.rbc-label');
-
-      // Check if label exists before accessing its style property
-      if (label) {
-        const time = label.textContent.trim();
-
-        // Modify font size based on condition (e.g., half-hour)
-        const fontSize = isHalfHour(time) ? '14px' : '16px';
-
-        // Check if style property exists before modifying fontSize
-        if (label.style) {
-          label.style.fontSize = fontSize;
-        }
-      }
-    });
+  const {
+    customTimeSlotFormat,
+    onNavigate,
+    dateRange,
+    appointments,
+    calendarview,
+    setCalendarView,
+  } = useCalendar();
+  const { open, setOpen, handleClickOpen } = useCalendarContext();
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const { showReasons } = useReasonsContext();
+  useEffect(() => {
+    const dayName = moment(currentDate).format('dddd');
   }, []);
 
-  // Function to check if the hour is on the half-hour
-  const isHalfHour = (time) => {
-    const minutes = parseInt(time.slice(-2));
-    return minutes === 30;
-  };
-  const customDayFormat = ({ date, culture, localizer }) => {
-    console.log(date);
-    return moment(date).format('D MMM YYYY'); // Format the day as "8 Nov 2023"
-  };
-
-  const customTimeSlotFormat = (timeSlot) => {
-    const hour = moment(timeSlot).hour();
-    const minutes = moment(timeSlot).minutes();
-    if (minutes === 0) {
-      return `${hour}h`; // Format the time slot as "9h"
-    } else {
-      return `${hour}h${minutes}`; // Format the time slot as "9h30"
-    }
-  };
-
   return (
-    <BigCalendar
-      localizer={localizer}
-      // date={'11-10-2023'}
-      defaultView={'work_week'}
-      max={moment('2021-10-10T19:00:00').toDate()}
-      min={moment('2021-10-10T09:00:00').toDate()}
-      formats={{
-        // dayFormat: customDayFormat,
-        timeGutterFormat: customTimeSlotFormat, // Apply the custom day format
-      }}
-      views={['day', 'agenda', 'work_week', 'month', 'week']}
-      components={{
-        toolbar: CalendarButtons,
-        event: AppointmentEvent,
-      }}
-      timeslots={1}
-      events={EVENTS}
-    />
+    <>
+      <BigCalendar
+        localizer={localizer}
+        selectable
+        onSelectSlot={handleClickOpen}
+        // date={'11-20-2023'}
+        defaultView={'work_week'}
+        max={moment('2021-10-10T21:00:00').toDate()}
+        min={moment('2021-10-10T09:00:00').toDate()}
+        onRangeChange={(range) => {
+          onNavigate(range, calendarview);
+        }}
+        formats={{
+          // dayFormat: customDayFormat,
+          timeGutterFormat: customTimeSlotFormat, // Apply the custom day format
+        }}
+        views={['day', 'agenda', 'work_week', 'month', 'week']}
+        components={{
+          toolbar: CalendarButtons,
+          event: AppointmentEvent,
+        }}
+        timeslots={1}
+        events={showReasons ? appointments : EVENTS}
+        // onNavigate={onNavigate}
+      />
+      <AddAppointmentSlot open={open} setOpen={setOpen} />
+    </>
   );
 };
 
 export default Calendar;
+
+const selectedDates = [
+  '2023-11-19T19:00:00.000Z',
+  '2023-11-20T19:00:00.000Z',
+  '2023-11-21T19:00:00.000Z',
+  '2023-11-22T19:00:00.000Z',
+  '2023-11-23T19:00:00.000Z',
+];

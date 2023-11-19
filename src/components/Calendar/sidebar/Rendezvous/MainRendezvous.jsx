@@ -4,7 +4,7 @@ import Patient from '../Patients/Patient';
 
 const MainRendezvous = () => {
   return (
-    <Box mt={2}>
+    <Box mt={2} pl={1} pr={1}>
       <Box mt={1} display="flex" alignItems="center" justifyContent="center" gap={1}>
         <Typography variant="h6" color="primary.dark" gutterBottom>
           Rendez-vous

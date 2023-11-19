@@ -6,63 +6,24 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
-import { styled } from '@mui/material/styles';
+
 import { useResponsive } from 'src/hooks/use-responsive';
-import InputBase from '@mui/material/InputBase';
 import { bgBlur } from 'src/theme/css';
 import SearchIcon from '@mui/icons-material/Search';
 
 import Iconify from 'src/components/iconify';
 
 import { NAV, HEADER } from './config-layout';
-import { Avatar, Typography } from '@mui/material';
-
+import { Avatar, ButtonBase, Typography } from '@mui/material';
+import { Search, SearchIconWrapper, StyledInputBase } from './customSearch/CustomSearch';
+import { useReasonsContext } from 'src/context/ReasonsContext';
+import CloseIcon from '@mui/icons-material/Close';
+import OpenReason from './common/openReason';
 // ----------------------------------------------------------------------
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: '15px',
-  flexGrow: 0.3,
-  backgroundColor: '#F4F4F4',
-  '&:hover': {
-    backgroundColor: '#F4F4F4',
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(3),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    color: 'black',
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    },
-  },
-}));
 export default function Header({ onOpenNav }) {
   const theme = useTheme();
-
+  const { showReasons } = useReasonsContext();
   const lgUp = useResponsive('up', 'lg');
 
   const renderContent = (
@@ -72,6 +33,8 @@ export default function Header({ onOpenNav }) {
           <Iconify icon="eva:menu-2-fill" />
         </IconButton>
       )}
+
+      <OpenReason />
 
       <Search>
         <SearchIconWrapper>

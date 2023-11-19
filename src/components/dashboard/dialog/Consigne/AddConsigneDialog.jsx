@@ -1,4 +1,3 @@
-'use client';
 import * as React from 'react';
 import { Typography, Dialog, DialogContent, DialogTitle, Grid, ButtonBase } from '@mui/material';
 import Zoom from '@mui/material/Zoom';

@@ -56,12 +56,12 @@ const pieChartOptions = {
   dataLabels: {
     enabled: true, // Display labels on the chart
     style: {
-      fontSize: '12px',
-      colors: ['black'],
+      fontSize: '13px',
+      colors: ['white'],
     },
-    formatter: (val, opts) => {
+    formatter: function (val, opts) {
       const roundedValue = Math.round(val); // Round to the nearest whole number
-      return opts.w.config.labels[opts.seriesIndex] + ' ' + roundedValue + '%';
+      return roundedValue;
     },
   },
 

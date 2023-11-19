@@ -54,8 +54,8 @@ export default function MaxWidthDialog({ open, setOpen }) {
           Rendez-vous important
         </DialogTitle>
         <DialogContent sx={{ p: 10 }}>
-          <Grid container sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Grid item sm={12} md={10} lg={8} sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Grid container sx={{ display: 'flex', justifyContent: 'left' }}>
+            <Grid item sm={12} md={10} lg={10} sx={{ display: 'flex', justifyContent: 'left' }}>
               <AppointmentSelect />
             </Grid>
           </Grid>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography, Grid, Avatar, Checkbox, Button } from '@mui/material';
 import SvgColor from 'src/components/svg-color';
 import History from '../Rendezvous/History';
-import { useCalendarContext } from 'src/components/context/CalendarContext';
+import { useCalendarContext } from 'src/context/CalendarContext';
 
 const Patient = () => {
   const { data } = useCalendarContext();

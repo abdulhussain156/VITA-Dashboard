@@ -8,12 +8,12 @@ const History = ({ history }) => {
         <SvgColor
           src="/assets/icons/clock.svg"
           sx={{
-            width: 20,
-            height: 20,
+            width: 15,
+            height: 15,
             color: 'rgba(4, 96, 163, 0.75)',
           }}
         />
-        <Typography variant="h6" color="primary.dark">
+        <Typography variant="subtitle1" color="primary.dark">
           Historique
         </Typography>
       </Box>

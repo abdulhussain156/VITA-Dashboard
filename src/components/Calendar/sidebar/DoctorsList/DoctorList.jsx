@@ -33,7 +33,7 @@ const DoctorList = () => {
         </Typography>
       </Box>
 
-      <Box mt={2} p={2}>
+      <Box mt={2} p={1}>
         {doctorData.map((item, key) => (
           <Doctor id={key} name={item.name} title={item.title} description={item.description} />
         ))}
