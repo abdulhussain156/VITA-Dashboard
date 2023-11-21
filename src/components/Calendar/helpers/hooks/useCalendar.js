@@ -65,6 +65,8 @@ const useCalendar = () => {
     appointments,
     calendarview,
     setCalendarView,
+    calendarview,
+    setCalendarView,
   };
 };
 

@@ -38,7 +38,7 @@ const Calendar = () => {
         selectable
         onSelectSlot={handleClickOpen}
         // date={'11-20-2023'}
-        defaultView={'work_week'}
+        defaultView={calendarview}
         max={moment('2021-10-10T21:00:00').toDate()}
         min={moment('2021-10-10T09:00:00').toDate()}
         onRangeChange={(range) => {

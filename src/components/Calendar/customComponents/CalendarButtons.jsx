@@ -8,6 +8,7 @@ import { Calendar as BigCalendar, momentLocalizer, Navigate } from 'react-big-ca
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useReasonsContext } from 'src/context/ReasonsContext';
+import useCalendar from '../helpers/hooks/useCalendar';
 
 const localizer = momentLocalizer(moment);
 
@@ -20,7 +21,7 @@ const buttons = [
 const CalendarButtons = (props) => {
   const [active, setActive] = useState('work_week');
   const { showReasons } = useReasonsContext();
-
+  const { setCalendarView } = useCalendar();
   useEffect(() => {
     props.onView(props.view);
   }, []);
@@ -123,7 +124,12 @@ const CalendarButtons = (props) => {
                 fontSize: '40px',
               }}
             />
-            <Button variant="contained" color="primary" sx={{ borderRadius: '15px' }}>
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ borderRadius: '15px' }}
+              onClick={() => props.onView('week')}
+            >
               Plage horaire
             </Button>
           </Box>
